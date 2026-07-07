@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Student Profile</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h2>Complete Student Profile</h2>
+
+<input type="number" id="userId" placeholder="User ID"><br><br>
+
+<input type="text" id="rollNo" placeholder="Roll Number"><br><br>
+
+<input type="text" id="department" placeholder="Department"><br><br>
+
+<input type="number" id="year" placeholder="Year"><br><br>
+
+<input type="number" id="semester" placeholder="Semester"><br><br>
+
+<input type="text" id="phone" placeholder="Phone Number"><br><br>
+
+<button onclick="saveProfile()">Save Profile</button>
+
+</div>
+
+<script>
+
+function saveProfile(){
+
+const student={
+
+userId:document.getElementById("userId").value,
+rollNo:document.getElementById("rollNo").value,
+department:document.getElementById("department").value,
+year:document.getElementById("year").value,
+semester:document.getElementById("semester").value,
+phone:document.getElementById("phone").value
+
+};
+
+fetch("../student",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify(student)
+
+})
+
+.then(response=>response.json())
+
+.then(data=>{
+
+alert(data.message);
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
