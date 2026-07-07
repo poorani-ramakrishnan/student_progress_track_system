@@ -24,6 +24,7 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
 
         response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
 
         BufferedReader reader = request.getReader();
 
@@ -37,7 +38,7 @@ public class RegisterServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
 
-        if (userId > 0) {
+        if(userId > 0) {
 
             out.print("{\"success\":true,\"message\":\"Registration Successful\"}");
 
@@ -48,5 +49,6 @@ public class RegisterServlet extends HttpServlet {
         }
 
         out.flush();
+        out.close();
     }
 }
